@@ -60,7 +60,14 @@ nums4.reverse(); // Reverses the order of the elements in the array
 
 console.log(nums4);
 
+// slice() method is used to extract a section of an array and returns a new array.
 
+let array5: number[] = [6, 53, 32, 23, 9];
+
+let sliced: number[] = array5.slice(1, 4);
+
+console.log(sliced);
+console.log(array5); // Original array remains unchanged
 
 
 
