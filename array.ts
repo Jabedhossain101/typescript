@@ -23,7 +23,6 @@ let bazarList2: string[] = ['Apples', 'Bananas'];
 
 bazarList2.unshift('Pineapples', 'Strawberries');
 console.log(bazarList2);
-
 //find()
 interface User{
   id: number;
@@ -38,6 +37,30 @@ let users: User[] = [
 let user: User | undefined = users.find(u => u.id === 2);
 
 // console.log(user);
+
+
+// sort() method is used to sort the elements of an array in place and returns the sorted array.
+
+let nums3: number[] = [3, 1, 4, 2, 5];
+
+nums3.sort((a, b) => a-b); // Sorts the array in ascending order
+
+console.log(nums3);
+let names: string[] = ['Rahim', 'Karim', 'Jamal', 'Salam'];
+
+names.sort(); // Sorts the array in ascending order
+console.log(names);
+
+
+// .reverse() method is used to reverse the order of the elements in an array in place and returns the reversed array.
+
+let nums4: number[] = [1, 2, 3, 4, 5];
+
+nums4.reverse(); // Reverses the order of the elements in the array
+
+console.log(nums4);
+
+
 
 
 
