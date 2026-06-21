@@ -88,3 +88,13 @@ let uppercase: string[]= names2.map((n:string)=>n.toUpperCase());
 
 console.log(uppercase);
 
+
+// filter() method is used to create a new array with all elements that pass the test implemented by the provided function.
+
+let nums7: number[] = [1, 2, 3, 4, 5];
+
+let evenNumbers: number[] = nums7.filter((n: number) => n % 2 === 0);
+
+
+console.log(evenNumbers);
+
