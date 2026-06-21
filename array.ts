@@ -22,7 +22,7 @@ let del: number | undefined = nums.shift();
 let bazarList2: string[] = ['Apples', 'Bananas'];
 
 bazarList2.unshift('Pineapples', 'Strawberries');
-console.log(bazarList2);
+// console.log(bazarList2);
 //find()
 interface User{
   id: number;
@@ -45,11 +45,11 @@ let nums3: number[] = [3, 1, 4, 2, 5];
 
 nums3.sort((a, b) => a-b); // Sorts the array in ascending order
 
-console.log(nums3);
+// console.log(nums3);
 let names: string[] = ['Rahim', 'Karim', 'Jamal', 'Salam'];
 
 names.sort(); // Sorts the array in ascending order
-console.log(names);
+// console.log(names);
 
 
 // .reverse() method is used to reverse the order of the elements in an array in place and returns the reversed array.
@@ -58,7 +58,7 @@ let nums4: number[] = [1, 2, 3, 4, 5];
 
 nums4.reverse(); // Reverses the order of the elements in the array
 
-console.log(nums4);
+// console.log(nums4);
 
 // slice() method is used to extract a section of an array and returns a new array.
 
@@ -66,9 +66,25 @@ let array5: number[] = [6, 53, 32, 23, 9];
 
 let sliced: number[] = array5.slice(1, 4);
 
-console.log(sliced);
-console.log(array5); // Original array remains unchanged
+// console.log(sliced);
+// console.log(array5); // Original array remains unchanged
 
 
+// map() method is used to create a new array populated with the results of calling a provided function on every element in the calling array.
 
+
+let nums6: number[] = [1, 2, 3, 4, 5];
+
+let doubled: number[] = nums6.map((n: number) => n * 2);
+
+console.log(doubled);
+
+console.log(nums6); // Original array remains unchanged
+
+
+let names2: string[] = ["jabed", "habib", "sabbir", "shakil"];
+
+let uppercase: string[]= names2.map((n:string)=>n.toUpperCase());
+
+console.log(uppercase);
 
