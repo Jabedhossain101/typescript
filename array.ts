@@ -19,7 +19,8 @@ let del: number | undefined = nums.shift();
 
 // console.log(del);
 
-// unshift() method is used to add one or more elements to the beginning of an array and returns the new length of the array.
+// unshift()
+//  method is used to add one or more elements to the beginning of an array and returns the new length of the array.
 
 let bazarList2: string[] = ['Apples', 'Bananas'];
 
@@ -55,7 +56,8 @@ names.sort(); // Sorts the array in ascending order
 // console.log(names);
 
 
-// .reverse() method is used to reverse the order of the elements in an array in place and returns the reversed array.
+// .reverse() 
+// method is used to reverse the order of the elements in an array in place and returns the reversed array.
 
 let nums4: number[] = [1, 2, 3, 4, 5];
 
@@ -130,11 +132,23 @@ let filteredName: string[] = member.filter((u: User) => u.id == 3);
 const arr2: number[] = [23, 43, 26, 47, 86, 33, 32];
 
 arr2.forEach((n: number, index: number)=> {
-  console.log(`Index ${index}: ${n}`);
+  // console.log(`Index ${index}: ${n}`);
 })
 
 
 // reduce()
 //  method is used to execute a reducer function on each element of the array, resulting in a single output value.
 
+let arr3:(string|number)[] = [23, 43, 23, 53, 23, 5, 34, 3];
 
+arr3.push("hello")
+arr3.pop()
+arr3.shift()
+
+arr3.unshift("me and bro")
+let findArr = arr3.find((n: String | number) => {
+  return typeof n === "number" && n > 20;
+})
+
+console.log(arr3);
+console.log(findArr);
