@@ -150,5 +150,52 @@ let findArr = arr3.find((n: String | number) => {
   return typeof n === "number" && n > 20;
 })
 
-console.log(arr3);
-console.log(findArr);
+// console.log(arr3);
+// console.log(findArr);
+
+
+
+// findIndex()
+// is used to find the index of the first element in an array that satisfies a provided testing function. It returns the index of the first matching element, or -1 if no match is found.
+
+
+let arr4: number[] = [32, 52, 52, 64, 23, 64, 21];
+
+let indexFor = arr4.findIndex((n: number) => n === 20)
+
+// console.log(indexFor);
+
+//includes()
+// method is used to determine whether an array includes a certain value among its entries, returning true or false as appropriate.
+
+let fruits: string[] = ["apple", "banana", "mango", "orange"]
+
+let hasFruits = fruits.includes("apple")
+
+console.log(hasFruits);
+
+
+// .indexOf()
+//  method is used to return the first index at which a given element can be found in the array, or -1 if it is not present.
+
+let arr5: number[] = [2, 43, 23, 53, 23, 5, 34, 3];
+
+console.log(arr5.indexOf(5));
+
+
+// .some()
+//  method is used to test whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+
+let arr6: number[] = [23, 43, 23, 53, 23, 5, 34, 3];
+let hasGreaterThan50 = arr6.some((n: number) => n > 50);
+
+console.log(hasGreaterThan50);
+
+// .EVERY()
+//  method is used to test whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+
+let arr7: number[] = [2,4,6,8,10];
+let allEven = arr7.every((n: number) => n % 2 === 0);
+
+console.log(allEven);
+
