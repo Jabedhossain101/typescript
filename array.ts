@@ -3,7 +3,6 @@ let bazarList: string[] = ['Apples', 'Bananas', 'Oranges', 'Grapes', 'Mangoes'];
 //splice()
 //  method is used to add or remove elements from an array.
 bazarList.push('Pineapples');
-
 bazarList.splice(2, 1); // Removes "Oranges" from the list
 
 // console.log(bazarList);
@@ -111,7 +110,7 @@ let member: User[] = [
   { id: 5, name: 'rabit' },
 ];
 
-let filteredName: string[] = member.filter((u: User) => u.id == 3);
+// let filteredName: string[] = member.filter((u: User) => u.id == 3);
 
 // console.log(filteredName);
 
@@ -211,3 +210,9 @@ let nested: number[][]=[[34,32,55,33],[34],[66],[77],[88]]
 let flatIt: number[] = nested.flat();
 
 console.log(flatIt);
+
+
+let student: (String | number)[] = ["rafi", 5, "Alif", 23, "babla", 5, 6, 4, 7];
+
+
+
