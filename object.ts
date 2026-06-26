@@ -46,6 +46,9 @@ user2.mobile = 1234567890;
 // console.log(user2);
 
 
+
+//nested object using interface
+
 interface Person {
   name: string;
   age: number;
@@ -69,3 +72,31 @@ let person: Person = {
 }
 
 console.log(person.phone.name);
+
+
+// object with function method
+
+
+interface calculator {
+  value: number;
+  add(n: number): number;
+  subtract: (n: number)=> number;
+}
+
+let calc: calculator = {
+  value: 0,
+  add(n: number): number {
+    this.value += n;
+    return this.value;
+  },
+  subtract: (n: number): number => {
+    calc.value -= n;
+    return calc.value;
+  },
+};    
+
+console.log(calc.add(5));
+console.log(calc.subtract(3));
+
+
+
