@@ -43,4 +43,29 @@ const user2: {
 
 user2.mobile = 1234567890; 
 
-console.log(user2);
+// console.log(user2);
+
+
+interface Person {
+  name: string;
+  age: number;
+  mobile: number;
+
+}
+
+interface phone{
+  name: string;
+
+}
+
+let person: Person = {
+  name: "rafsan",
+  age: 23,
+  mobile: 2323,
+  phone : {
+    name: "samsung",
+
+  }
+}
+
+console.log(person.phone.name);
