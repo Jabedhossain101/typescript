@@ -99,4 +99,19 @@ console.log(calc.add(5));
 console.log(calc.subtract(3));
 
 
+//object destructuring
+
+interface User {
+  name: string;
+  age: number;
+  email: string;
+}
+
+let user: User = { name: 'Rahim', age: 25, email: 'rahim@mail.com' };
+
+// Destructuring
+let { name, age } = user;
+console.log(name, age); 
+
+
 
