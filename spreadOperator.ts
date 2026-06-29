@@ -22,7 +22,28 @@ let mon: string[] = ["Ali", "Osman", "Hossain"]
 
 let raf: (string | number)[] = [...ron, ...mon,...allFriends]
 
-console.log(raf);
+// console.log(raf);
 
+
+//rest operator
+
+const sentInvite = (friend1: string, friend2: string, friend3: string) => {
+  
+  console.log(`sent Invitation to ${friend1}`);
+  console.log(`sent Invitation to ${friend2}`);
+  console.log(`sent Invitation to ${friend3}`);
+}
+
+sentInvite("Ali", "Osman", "Hossain");
+
+// rest operator using foreach loop
+
+const sentInvite2 = (...friends: string[]) => {
+  friends.forEach((friend) => {
+    console.log(`sent Invitation to ${friend}`);
+  });
+}
+
+sentInvite2("Ali", "Osman", "Hossain", "Rafsan", "Rafsan2", "Rafsan3");
 
 
