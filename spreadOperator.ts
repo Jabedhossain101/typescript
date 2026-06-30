@@ -47,3 +47,5 @@ const sentInvite2 = (...friends: string[]) => {
 sentInvite2("Ali", "Osman", "Hossain", "Rafsan", "Rafsan2", "Rafsan3");
 
 
+
+
