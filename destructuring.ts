@@ -52,6 +52,16 @@ console.log(C);
 const [x = 10, y = 20] = [];
 console.log(x, y);
 
+const person = {
+  name: 'Tania',
+  address: { city: 'Dhaka', zip: '1207' },
+};
+
+const {
+  address: { city, zip },
+} = person;
+console.log(city, zip);
+
 
 
 
