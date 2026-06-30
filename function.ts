@@ -7,17 +7,25 @@ function add(num1:number, num2: number) {
   return num1 + num2;
 }
 
-console.log(34, 23);
+console.log(add(34, 23));
 
-const sums = (num5:number, num6:number) => num5 + num6;
+const sums = (num5: number, num6: number) => num5 + num6;
+
+console.log(sums(3,4));
 
 
 
-type AddFunc = (number1: number, number2: number) => number;
+type addFunc = (
+  number1: number,
+  number2: number,
+) => number;
 
-const addNum: AddFunc = (number1, number2) => number1 + number2;
+const addNum:addFunc=(number1,number2)=>number1+number2
 
-console.log(addNum(10, 20));
+console.log(addNum(35,54));
+
+
+
 export {}
 
 
