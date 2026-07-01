@@ -1,6 +1,6 @@
 // ? : ternary operator: decision making
 
-// ?? : nullish coalecing operators
+// ?? : nullish coalecing operators------ use for null or undefined values
 
 // ?. optional chaining
 
@@ -18,4 +18,14 @@ biyerJonnoEligible(21);
 // if (userAge >= 21) {
 //   console.log('you are eligible');
 // }
+
+
+
+// nullish coalecing operator
+
+const userTheme = null;
+
+const selectedTheme = userTheme ?? 'light';
+
+console.log(selectedTheme);
 
