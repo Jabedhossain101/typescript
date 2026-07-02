@@ -29,3 +29,29 @@ const selectedTheme = userTheme ?? 'light';
 
 console.log(selectedTheme);
 
+
+const isAuthenticated = " ";
+
+const resultWithTernary = isAuthenticated ? isAuthenticated : "you are sishu";
+
+const resultWithNullish = isAuthenticated ?? "you are sishu";
+
+console.log({resultWithTernary},{resultWithNullish});
+
+
+//optional chaining
+
+const user: {
+  address: {
+    city: string;
+    town: string;
+    postalCode: string;
+   
+  }
+} = {
+  address: {
+    city: "Dhaka",
+    town: "Uttara",
+    postalCode: "1230"
+  },
+}
