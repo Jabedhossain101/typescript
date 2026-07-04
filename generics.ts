@@ -36,3 +36,106 @@ const userList: Array<{ name: string; age: number }> = [
     age: 23,
   },
 ];
+
+// using interface
+
+
+type user = {
+  name: string,
+  roll: number,
+  location: string,
+  mobile: number
+}
+
+const users: Array<user> = [
+  {
+    name: 'Rafsan',
+    roll: 101,
+    location: 'Dhaka',
+    mobile: 1234567890,
+  },
+];
+
+
+// ----------Interface Generics--------------
+
+interface developer <T,Y>{
+  name: string;
+  salary: number,
+  device: {
+    brand: string,
+    model: string,
+    releasedYear: number,
+  }
+  smartwatch: T, 
+  bike: Y
+}
+
+interface bikeDev{
+  bikes: String,
+  model: string,
+  CC: number,
+}
+
+interface poorDev
+  {
+  heartRate: string,
+  timer: boolean,
+}
+
+const poorDeveloper: developer<poorDev,bikeDev> = {
+  name: ' mr poor',
+  salary: 20,
+  device: {
+    brand: 'lenovo',
+    model: '15 plus',
+    releasedYear: 2024,
+  },
+  smartwatch: {
+    heartRate: '200',
+    timer: true,
+  },
+  bike: {
+    bikes: "pulser",
+    model: "150",
+    CC: 250,
+
+  }
+}
+
+
+
+
+
+interface devRich
+{
+  heartRate: string,
+  timer: boolean,
+  stopwatch: boolean,
+  walkStep: boolean,
+  calculator: boolean,
+}
+
+const richDeveloper: developer<devRich, bikeDev> = {
+  name: ' mr rich',
+  salary: 100,
+  device: {
+    brand: 'iphone',
+    model: '15 pro',
+    releasedYear: 2025,
+  },
+  smartwatch: {
+    heartRate: '300',
+    timer: true,
+    stopwatch: true,
+    walkStep: true,
+    calculator: true,
+  },
+  bike: {
+    bikes: 'Fz',
+    model: '180',
+    CC: 280,
+  },
+};
+
+console.log(richDeveloper);
