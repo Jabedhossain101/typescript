@@ -139,3 +139,40 @@ const richDeveloper: developer<devRich, bikeDev> = {
 };
 
 console.log(richDeveloper);
+
+
+// -------Generic with function---------
+
+const createArrayString = (value: string) => [value];
+
+const creteArrayNumber = (value: number) => [
+  value
+]
+
+const createArrayUserObject = (value: {
+  id: number,name: string
+}) => {
+
+  return [value]
+}
+
+
+const arrString = createArrayString('apple')
+
+const arrNum = creteArrayNumber(344);
+
+
+//tuple
+
+const createArrayWithTuple = (x: {
+  id: number,
+  name: string
+}, y: string) => [
+  x,y
+  ]
+
+const createArrayTuple = <X,Y> (param1: X, param2: Y) => [
+  param1,
+  param2
+]
+
