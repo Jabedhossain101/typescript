@@ -49,3 +49,12 @@ sentInvite2("Ali", "Osman", "Hossain", "Rafsan", "Rafsan2", "Rafsan3");
 
 
 
+const myStd: (string | number)[] = ['naim', 23, 'asif', 'nazrul']
+
+
+const first = myStd[2];
+console.log(first);
+
+const person: (string | number)[] = [...myStd,23,34,54];
+
+console.log(person);

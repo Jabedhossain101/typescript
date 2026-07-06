@@ -35,3 +35,29 @@ const student3 = {
 const result = courseStudent(student3);
 console.log(result);
 
+
+
+//keyof : type operator
+
+type RichPeopleVehicle = {
+  car: string,
+  bike: string,
+  boat: string
+}
+
+type MyVehicle1 = 'bike' | 'car' | 'boat';
+type MyVehicle2 = keyof RichPeopleVehicle;
+
+const myVehicle: MyVehicle1 = 'car';
+
+
+const user = {
+  id: 22,
+  name: 'rafsan',
+  city: 'Dhaka'
+}
+
+const myId = user['id'];
+const myname = user['name']
+
+console.log('hello', myname, myId);
