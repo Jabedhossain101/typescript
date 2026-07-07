@@ -37,7 +37,7 @@ console.log(result);
 
 
 
-//keyof : type operator
+//--------keyof Constraint Operation: type operator---------
 
 type RichPeopleVehicle = {
   car: string,
@@ -51,13 +51,52 @@ type MyVehicle2 = keyof RichPeopleVehicle;
 const myVehicle: MyVehicle1 = 'car';
 
 
-const user = {
+interface User{
+  id: number,
+  name: string,
+  address: {
+    city: string,
+    houseCode: number
+  }
+  
+}
+const user : User = {
   id: 22,
   name: 'rafsan',
-  city: 'Dhaka'
-}
+  address: {
+    city: 'Dhaka',
+    houseCode: 232,
+  },
+};
 
 const myId = user['id'];
 const myname = user['name']
+const myAddress = user['address']
 
-console.log('hello', myname, myId);
+console.log('hello', myname, myId, 'amar',myAddress);
+
+const getPro = <X>(obj: X, key: keyof X)=>{
+return obj[key]
+}
+
+const res = getPro(user, "name");
+
+console.log(res);
+
+const product = {
+  brand: 'hp'
+}
+
+const student = {
+  id: 2323,
+  name: 'rahat',
+  age: 32
+  
+}
+
+
+const result2 = getPro(product, 'brand')
+
+const rahResult = getPro(student, 'name')
+
+console.log(result2, rahResult);
