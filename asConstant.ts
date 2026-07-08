@@ -14,13 +14,8 @@ const userRoles = {
 
 type UserRole = typeof userRoles[keyof typeof userRoles];
 
-/**
- {
-  readonly Admins :'Admin',
-   readonly Editors : 'Editor',
-   Viewers : ' Viewer',
-}
- */
+
+
 // userRoles.Admins='mon chaise'
 
 const canEdits = (role: UserRole) => {
