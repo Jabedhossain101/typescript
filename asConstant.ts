@@ -12,6 +12,7 @@ const userRoles = {
    Viewers : ' Viewer',
 } as const;
 
+type UserRole = typeof userRoles[keyof typeof userRoles];
 
 /**
  {
@@ -22,12 +23,12 @@ const userRoles = {
  */
 // userRoles.Admins='mon chaise'
 
-const canEdits = (role: UserRoles) => {
-  if (role === UserRoles.Admin || role === UserRoles.Editor) {
+const canEdits = (role: UserRole) => {
+  if (role === userRoles.Admins || role === userRoles.Editors) {
     return true;
   } else return false;
 };
 
-const isEdit = canEdit(UserRoles.Admin);
+const isEdit = canEdits(userRoles.Admins);
 
-console.log(isEditable);
+console.log(isEdit);
