@@ -1,3 +1,28 @@
+class Parent {
+  id: number; //common
+  name: string; //common
+  age: number; //common
+  address: string; //common
+
+  constructor(id: number, name: string, age: number, address: string) {
+    this.id = id;
+    this.name = name;
+    this.age = age;
+    this.address = address;
+  }
+
+  makeData() {
+    console.log(
+      `${this.name} is a brilliant student, who is ${this.age} years old`,
+    );
+  }
+
+  getSleep(numOfHour: number) {
+    console.log(`${this.name} ${numOfHour} hour ghumay`);
+  }
+}
+
+
 class student {
   id: number; //common
   name: string; //common
@@ -38,10 +63,10 @@ class Teacher {
   designation: string; //common
 
   constructor(id: number, name: string, age: number, address: string, designation: string) {
-    this.id = id;
-    this.name = name;
-    this.age = age;
-    this.address = address;
+    this.id = id;//common
+    this.name = name;//common
+    this.age = age;//common
+    this.address = address;//common
     this.designation= designation
   }
 
