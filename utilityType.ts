@@ -29,6 +29,16 @@ const product: productWithColor = {
 type OptionalProduct = Partial<Product>
 
 
-type productRead= Readonly<productSummery>
+type productRead = Readonly<productSummery>
+
+
+const emptyObj: Record<string, unknown> = {};
+
+const product1 = {
+  id: 2323,
+  name: 'laptop',
+  price: '20k'
+  
+}
 
 export default{}
