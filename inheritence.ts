@@ -91,4 +91,4 @@ class Teacher {
 
 const teacher1=new Teacher(12,'Mr. Abdullah',32,'Chittagong','senior teacher')
 
-teacher1.takeClass(7);
+// teacher1.takeClass(7);
