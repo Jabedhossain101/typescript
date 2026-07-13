@@ -26,9 +26,19 @@ class Parent {
 
 class student extends Parent {
 
+
+  roll: number;
+
+  constructor(name: string, id: number, age: number, address: string, roll: number) {
+    
+    super(id, name, age, address);
+    this.roll= roll
+
+  }
+  
 }
 
-const student1 = new student(12, 'alice', 53, 'dhaka');
+const student1 = new student(23, 'alice', 53, 'dhaka',33);
 
 student1.getSleep(8);
 
