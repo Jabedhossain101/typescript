@@ -47,4 +47,4 @@ const getUserInfo = (user: normalUser | AdminUser)=>{
 
 }
 
-getUserInfo({name:'normal'})
+getUserInfo({name:'normal', role: "Admin"})
