@@ -21,3 +21,30 @@ const addition = add('4', '5')
 console.log(addition);
 
 console.log(add('6', '2'));
+
+
+// typeGuard
+
+type normalUser = {
+  name: string;
+}
+
+type AdminUser = {
+  name: string;
+  role: 'Admin';
+}
+
+const getUserInfo = (user: normalUser | AdminUser)=>{
+
+  if ("role" in user) {
+    
+    console.log(`This ${user.name} and his role is ${user.role}`)
+
+  } else {
+    
+    console.log(`${user.name}`);
+  }
+
+}
+
+getUserInfo({name:'normal'})
