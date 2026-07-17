@@ -19,6 +19,13 @@ class BankAccount{
   }
 }
 
+
+class studentBankAccount extends BankAccount{
+  test() {
+    this.userName;
+  }
+}
+
 const rafsanAccount = new BankAccount(111, 'rafsan', 100);
 
 rafsanAccount.userId = 12;
