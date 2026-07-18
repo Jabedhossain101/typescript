@@ -1,9 +1,6 @@
 
-// static type 
-
-
 class Counter{
-  count: number = 0;
+   count: number = 0;
 
 
   increment() {
@@ -26,12 +23,25 @@ console.log(instance1.increment());
 
 
 
-
+// static use kore //ekta memory te store hoy
 class counting{
-  counted: number = 0;
+  static counted: number = 0;
 
-  increment() {
-   
+  static increment() {
+   return(counting.counted= counting.counted+1)
+  }
+
+  static decrement() {
+    return(counting.counted= counting.counted-1)
   }
   
 }
+
+
+// const instance2 = new counting();
+// const distance = new counting();
+
+// console.log(instance2.increment());
+
+
+console.log(counting.increment());
