@@ -1,4 +1,4 @@
-# TypeScript Concepts — Interview Prep Guide
+# TypeScript Concepts —
 
 ## Priority Legend
 
