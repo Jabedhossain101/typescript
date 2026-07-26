@@ -1,6 +1,4 @@
-# TypeScript Concepts 
-
-
+# TypeScript Concepts — Interview Prep Guide
 
 ## Priority Legend
 
@@ -30,6 +28,21 @@
 
 **How it works:** The `constructor` runs when an instance is created with `new`; properties and methods are bound to that instance via `this`. TypeScript type-checks everything at compile time, then transpiles down to plain JavaScript classes at runtime.
 
+**Structure:**
+```
+class ClassName {
+  property: Type;
+
+  constructor(param: Type) {
+    this.property = param;
+  }
+
+  methodName(): ReturnType {
+    // ...
+  }
+}
+```
+
 **Interview Questions:**
 - Difference between a class and an interface in TypeScript?
 - What happens when you compile a TS class to JS (ES5 vs ES6 target)?
@@ -45,6 +58,23 @@
 **What it does:** Uses `abstract` classes/methods to define a contract or blueprint that cannot be instantiated directly; subclasses are forced to implement the abstract methods.
 
 **How it works:** At compile time, TypeScript blocks any attempt to instantiate an abstract class directly, and verifies that every subclass has overridden all the required abstract methods.
+
+**Structure:**
+```
+abstract class BaseName {
+  abstract methodName(): ReturnType;   // no body — must be implemented
+
+  concreteMethod(): ReturnType {
+    // has a body — inherited as-is
+  }
+}
+
+class Derived extends BaseName {
+  methodName(): ReturnType {
+    // required implementation
+  }
+}
+```
 
 **Interview Questions:**
 - Difference between abstraction and encapsulation?
@@ -62,6 +92,19 @@
 
 **How it works:** These are purely compile-time checks — JavaScript at runtime has no real concept of private/protected (aside from the native ES2022 `#private` field). The TS compiler enforces these rules, but the compiled JS output has no actual runtime restriction.
 
+**Structure:**
+```
+class ClassName {
+  public field1: Type;
+  private field2: Type;
+  protected field3: Type;
+
+  public method1() {}
+  private method2() {}
+  protected method3() {}
+}
+```
+
 **Interview Questions:**
 - Are TypeScript's `private` members truly private at runtime?
 - Difference between `private` and the native JavaScript `#private` field?
@@ -78,6 +121,22 @@
 
 **How it works:** `private`/`protected` fields are declared, and controlled `public` methods (or getters/setters) provide read/write access to those fields — direct property access from outside is blocked.
 
+**Structure:**
+```
+class ClassName {
+  private internalState: Type;
+
+  public getState(): Type {
+    return this.internalState;
+  }
+
+  public updateState(value: Type): void {
+    // validation before mutating internalState
+    this.internalState = value;
+  }
+}
+```
+
 **Interview Questions:**
 - How is encapsulation different from abstraction (this comes up a LOT)?
 - Why is direct property access considered bad practice in OOP?
@@ -92,6 +151,27 @@
 **What it does:** Lets a class (child) inherit properties and methods from another class (parent), and optionally override them to provide its own behavior.
 
 **How it works:** The `extends` keyword sets up a parent-child relationship; the child class's constructor must call `super()` to invoke the parent's constructor before accessing `this`. Overriding a method means the child's version runs at runtime (runtime polymorphism).
+
+**Structure:**
+```
+class Parent {
+  constructor(protected field: Type) {}
+
+  method(): ReturnType {
+    // base behavior
+  }
+}
+
+class Child extends Parent {
+  constructor(field: Type, private extra: Type) {
+    super(field);
+  }
+
+  method(): ReturnType {
+    // overridden behavior
+  }
+}
+```
 
 **Interview Questions:**
 - Why must `super()` be called before using `this` in a derived class constructor?
@@ -109,6 +189,24 @@
 
 **How it works:** This is resolved at runtime (dynamic dispatch) — when the call happens, TypeScript/JS looks at the object's actual class and executes that class's version of the method, not the parent's.
 
+**Structure:**
+```
+abstract class Base {
+  abstract action(): ReturnType;
+}
+
+class VariantA extends Base {
+  action(): ReturnType { /* variant A behavior */ }
+}
+
+class VariantB extends Base {
+  action(): ReturnType { /* variant B behavior */ }
+}
+
+const items: Base[] = [new VariantA(), new VariantB()];
+items.forEach(item => item.action()); // each runs its own version
+```
+
 **Interview Questions:**
 - Difference between compile-time (overloading) and runtime (overriding) polymorphism?
 - How does polymorphism improve code maintainability?
@@ -123,6 +221,19 @@
 **What it does:** Creates a contract for what keys an object will hold and what type each key's value should be — using `interface` or `type`.
 
 **How it works:** TypeScript uses structural typing — meaning an object is considered compatible with a type based on its shape matching, not its name (duck typing).
+
+**Structure:**
+```
+interface Name {
+  requiredProp: Type;
+  optionalProp?: Type;
+  [dynamicKey: string]: Type;   // index signature
+}
+
+type Alias = {
+  requiredProp: Type;
+};
+```
 
 **Interview Questions:**
 - Difference between `interface` and `type` in TypeScript?
@@ -140,6 +251,14 @@
 
 **How it works:** At compile time, each element's type is checked according to its index; a tuple raises an error on a length or position mismatch, while a plain array only checks that all elements share the declared type.
 
+**Structure:**
+```
+const arr: Type[] = [];
+const arr2: Array<Type> = [];
+const tuple: [Type1, Type2] = [value1, value2];
+const readonlyArr: readonly Type[] = [];
+```
+
 **Interview Questions:**
 - Difference between an array and a tuple?
 - What does `readonly` array mean and when would you use it?
@@ -154,6 +273,14 @@
 **What it does:** Assigns array elements or object properties directly to new variables, with optional default values or renaming.
 
 **How it works:** The compiler destructures like pattern-matching — by position in an array, by key name in an object — and TypeScript infers the exact type of each destructured variable.
+
+**Structure:**
+```
+const [first, second] = arrayValue;
+const { key1, key2 } = objectValue;
+const { key1: renamed, key2 = defaultValue } = objectValue;
+const { nested: { innerKey } } = objectValue;
+```
 
 **Interview Questions:**
 - How do you provide default values while destructuring?
@@ -170,6 +297,18 @@
 
 **How it works:** Spread produces a shallow copy (nested object/array references are still shared); a rest parameter sits at the end of a function signature and gathers all remaining arguments into an array.
 
+**Structure:**
+```
+// spread
+const merged = [...arr1, ...arr2];
+const mergedObj = { ...obj1, ...obj2 };
+
+// rest
+function fn(first: Type, ...rest: Type[]) {}
+const [head, ...tail] = arrayValue;
+const { key1, ...restProps } = objectValue;
+```
+
 **Interview Questions:**
 - Difference between spread and rest — they look the same (`...`) but do opposite things, explain.
 - Does spread do a deep copy or shallow copy?
@@ -184,6 +323,18 @@
 **What it does:** Lets you type parameters, return values, optional/default parameters, and declare multiple signatures (overloads) for the same function name.
 
 **How it works:** Overloads declare multiple signatures above, followed by a single implementation below that typically uses broad types (like `any`) to handle all of them; TypeScript matches the caller's arguments against the correct signature for type checking.
+
+**Structure:**
+```
+function fn(param1: Type1, param2?: Type2, param3: Type3 = defaultVal): ReturnType {}
+
+const arrowFn = (param: Type): ReturnType => { /* ... */ };
+
+// overloads
+function combine(a: string, b: string): string;
+function combine(a: number, b: number): number;
+function combine(a: any, b: any): any { /* single implementation */ }
+```
 
 **Interview Questions:**
 - How do function overloads work in TypeScript (compared to Java/C++)?
@@ -200,6 +351,20 @@
 **What it does:** Uses a "type parameter" (commonly `T`) that gets replaced with an actual type at the call site — the same code becomes reusable for different types.
 
 **How it works:** At the call site, TypeScript either takes an explicit type argument (`Box<number>`) or infers it from the arguments. It's all resolved at compile time — generics don't exist at runtime (type erasure).
+
+**Structure:**
+```
+function identity<T>(value: T): T { return value; }
+
+class Container<T> {
+  constructor(private value: T) {}
+  get(): T { return this.value; }
+}
+
+function pair<T, U>(a: T, b: U): [T, U] { return [a, b]; }
+
+const instance = new Container<Type>(value);
+```
 
 **Interview Questions:**
 - Why use generics instead of `any`?
@@ -218,6 +383,22 @@
 
 **How it works:** At compile time, TypeScript checks whether the actual type passed as an argument satisfies that constraint; if not, it raises an error — if it does, it allows access to that property/method inside the generic.
 
+**Structure:**
+```
+interface Constraint {
+  requiredProp: Type;
+}
+
+function fn<T extends Constraint>(item: T): T {
+  // item.requiredProp is safely accessible here
+  return item;
+}
+
+function fnWithKeyof<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+```
+
 **Interview Questions:**
 - Why do you need constraints on generics?
 - Example: how would you write a generic function that only works on objects with a `length` property?
@@ -232,6 +413,24 @@
 **What it does:** Builds a group of named constants (numeric or string-based) from which a single value can be selected.
 
 **How it works:** A numeric enum auto-increments from 0 by default (and the compiled JS includes a reverse mapping object); a string enum requires an explicit value for every member. A `const enum` gets inlined at compile time, producing no runtime object at all.
+
+**Structure:**
+```
+enum NumericEnum {
+  Member1,
+  Member2,
+  Member3,
+}
+
+enum StringEnum {
+  Member1 = "VALUE1",
+  Member2 = "VALUE2",
+}
+
+const enum ConstEnum {
+  Member1 = "VALUE1",
+}
+```
 
 **Interview Questions:**
 - Difference between numeric enum and string enum?
@@ -248,6 +447,20 @@
 
 **How it works:** The `static` keyword makes that member exist as a single copy in memory, shared by all instances; it's accessed as `ClassName.member`, not `instance.member`.
 
+**Structure:**
+```
+class ClassName {
+  static staticProp: Type;
+  static readonly CONSTANT: Type;
+
+  static staticMethod(): ReturnType {
+    return ClassName.staticProp;
+  }
+}
+
+ClassName.staticMethod(); // called on the class, not an instance
+```
+
 **Interview Questions:**
 - When would you use a static method over an instance method?
 - Can static members access instance (non-static) properties directly? Why not?
@@ -262,6 +475,25 @@
 **What it does:** `get` returns a computed value (looks like reading a property, but is actually a function call under the hood); `set` accepts a value, runs validation/processing, and updates internal state.
 
 **How it works:** From the outside it looks like ordinary property access (`obj.value = 10`), but internally it's a method call — so custom validation logic runs right at the moment of assignment.
+
+**Structure:**
+```
+class ClassName {
+  private _field: Type;
+
+  get field(): Type {
+    return this._field;
+  }
+
+  set field(value: Type) {
+    // validation
+    this._field = value;
+  }
+}
+
+instance.field = value;   // calls the setter
+instance.field;           // calls the getter
+```
 
 **Interview Questions:**
 - Why use getters/setters instead of public fields directly?
@@ -278,6 +510,20 @@
 
 **How it works:** Optional chaining checks at every `.` step whether the value on the left is `null`/`undefined` — if so, it immediately short-circuits and returns `undefined` without evaluating the rest of the chain.
 
+**Structure:**
+```
+interface Type {
+  optionalProp?: Type2;
+}
+
+function fn(required: Type, optional?: Type2) {}
+
+value?.property;
+value?.method?.();
+value?.[dynamicKey];
+value ?? fallbackValue;
+```
+
 **Interview Questions:**
 - Difference between optional chaining (`?.`) and nullish coalescing (`??`)?
 - How does optional chaining prevent runtime errors like "Cannot read property of undefined"?
@@ -292,6 +538,19 @@
 **What it does:** `null`/`undefined` — represent the absence of a value. `unknown` — could be any type, but must be narrowed before it can be used (the type-safe alternative to `any`). `never` — a type that never has a value at all (e.g. a function that always throws or loops forever).
 
 **How it works:** With `unknown`, the TS compiler forces you to narrow the type (using `typeof`/`instanceof`, etc.) before performing any operation on it. `never` is typically used in exhaustiveness checking — verifying that every possible case has been handled.
+
+**Structure:**
+```
+let value: unknown;
+let empty: null;
+let notAssigned: undefined;
+
+function alwaysThrows(): never {
+  throw new Error("message");
+}
+
+function nullable(): Type | null { /* ... */ }
+```
 
 **Interview Questions:**
 - Difference between `any` and `unknown`?
@@ -309,6 +568,13 @@
 
 **How it works:** This is purely a compile-time way of "convincing" TS (`as Type` or `<Type>value`); no actual conversion happens at runtime — if the assertion is wrong, it can lead to a runtime crash.
 
+**Structure:**
+```
+const value1 = (something as Type);
+const value2 = (<Type>something);
+const nonNull = value!;   // non-null assertion
+```
+
 **Interview Questions:**
 - Difference between type assertion and type casting (like in Java/C++)?
 - Why is type assertion considered "unsafe" if misused?
@@ -324,6 +590,17 @@
 **What it does:** Narrows a broader type (e.g. `string | number`) down to one specific, narrower type through a runtime check.
 
 **How it works:** Using `typeof` (for primitives), `instanceof` (for class instances), `in` (for property existence checks), or a custom predicate function (`pet is Fish` — which declares its return type using the `is` keyword), the TS compiler synchronizes the runtime check with compile-time narrowing.
+
+**Structure:**
+```
+if (typeof value === "string") { /* narrowed to string */ }
+if (value instanceof ClassName) { /* narrowed to ClassName */ }
+if ("propertyName" in value) { /* narrowed by property presence */ }
+
+function isTypeA(value: TypeA | TypeB): value is TypeA {
+  return (value as TypeA).uniqueProp !== undefined;
+}
+```
 
 **Interview Questions:**
 - What are the different ways to write a type guard in TypeScript?
@@ -341,6 +618,18 @@
 
 **How it works:** On a union type, TS only lets you access members/methods that exist on every possible type in the union, until you narrow it. On an intersection type, all the properties of the combined types get merged together — an object must satisfy every combined type's requirements.
 
+**Structure:**
+```
+type UnionType = TypeA | TypeB | TypeC;
+
+type IntersectionType = TypeA & TypeB;
+
+// discriminated union
+type Shape =
+  | { kind: "circle"; radius: Type }
+  | { kind: "square"; side: Type };
+```
+
 **Interview Questions:**
 - Difference between union and intersection types with real examples?
 - What is a discriminated union and why is it useful?
@@ -357,6 +646,14 @@
 
 **How it works:** By default, TS widens something like `const colors = ["red","green"]` to `string[]`, but adding `as const` makes it `readonly ["red","green"]` — each element becomes a literal type, and the array becomes immutable (readonly).
 
+**Structure:**
+```
+const values = [val1, val2, val3] as const;
+const config = { key1: val1, key2: val2 } as const;
+
+type DerivedUnion = (typeof values)[number];
+```
+
 **Interview Questions:**
 - Why does TypeScript "widen" literal types by default, and how does `as const` prevent that?
 - How can `as const` be combined with `typeof` to derive a union type from an array?
@@ -371,6 +668,13 @@
 **What it does:** Loops over every key of a type (`[K in keyof T]`), applying a new modifier (optional, readonly) or a new value type to each key to generate a new type.
 
 **How it works:** At compile time, `keyof T` produces a union of all the keys of an existing type, and then a new rule is applied to each key to build the new type — this is exactly the underlying mechanism behind utility types like `Partial` and `Readonly`.
+
+**Structure:**
+```
+type MyPartial<T> = { [K in keyof T]?: T[K] };
+type MyReadonly<T> = { readonly [K in keyof T]: T[K] };
+type MyNullable<T> = { [K in keyof T]: T[K] | null };
+```
 
 **Interview Questions:**
 - How would you implement your own version of `Partial<T>` using a mapped type?
@@ -387,6 +691,13 @@
 
 **How it works:** At compile time, TS checks whether `T` is actually assignable to `U`; if so, the first branch's type is resolved, otherwise the second one is. The `infer` keyword lets you "extract" a new type from within the condition (e.g. pulling the inner type out of a `Promise`).
 
+**Structure:**
+```
+type Conditional<T> = T extends ConditionType ? TrueType : FalseType;
+
+type Unwrap<T> = T extends Promise<infer U> ? U : T;
+```
+
 **Interview Questions:**
 - What does the `infer` keyword do inside a conditional type?
 - How would you write a type to unwrap a `Promise<T>` to get `T`?
@@ -401,6 +712,18 @@
 **What it does:** Builds new derived types from existing ones — e.g. `Partial<T>` (all optional), `Required<T>` (all required), `Readonly<T>` (all readonly), `Pick<T,K>` (keep specific keys), `Omit<T,K>` (drop specific keys), `Record<K,V>` (key-value map type), `ReturnType<T>` (extract a function's return type).
 
 **How it works:** These are internally built using mapped types and conditional types (defined in TS's `lib.d.ts`) — meaning they're not "magic," they're just practical, ready-made applications of the earlier concepts (mapped + conditional types).
+
+**Structure:**
+```
+Partial<T>
+Required<T>
+Readonly<T>
+Pick<T, "key1" | "key2">
+Omit<T, "key1" | "key2">
+Record<KeyType, ValueType>
+ReturnType<typeof fn>
+Parameters<typeof fn>
+```
 
 **Interview Questions:**
 - Name 5 utility types you use often and explain what each does.
@@ -417,6 +740,17 @@
 **What it does:** Uses a divide-and-conquer approach — repeatedly splitting an array in half, sorting each part independently, then merging the sorted parts back together to sort the whole array.
 
 **How it works:** The array is recursively split until each piece has a single element (trivially sorted), then two sorted pieces are compared and merged into one sorted piece — working bottom-up.
+
+**Structure:**
+```
+function merge(left: number[], right: number[]): number[] { /* ... */ }
+
+function mergeSort(arr: number[]): number[] {
+  if (arr.length <= 1) return arr;
+  const mid = /* midpoint */;
+  return merge(mergeSort(leftHalf), mergeSort(rightHalf));
+}
+```
 
 **Interview Questions:**
 - What is the time and space complexity of merge sort?
