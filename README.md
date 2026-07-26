@@ -1,4 +1,4 @@
-# TypeScript Concepts —
+# TypeScript Concepts
 
 ## Priority Legend
 
